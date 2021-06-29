@@ -8,6 +8,10 @@ pertenece para cargar ese archivo.
 //Cargamos el autoload.php, para tener acceso a todos los controladores
 require_once 'autoload.php';
 
+require_once 'views/layout/header.php';
+require_once 'views/layout/sidebar.php';
+
+
 //Comprobamos si llega el controlador por la URL:
 if(isset($_GET['controller'])){
     $nombre_controlador = $_GET['controller'].'Controller';
@@ -30,6 +34,9 @@ if(class_exists($nombre_controlador)){
         echo "La pagina que buscas no existe.";
     }
 }else{
-    echo "La páina que buscas no existe.";
+    echo "La página que buscas no existe.";
 }
+
+require_once 'views/layout/footer.php';
+
 ?>
