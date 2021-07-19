@@ -1,7 +1,17 @@
 <?php
 
     function controllers_autoload ($classname) {
-        include 'controllers/'.$classname . '.php';
+
+        $path = "controllers/";
+        $extension = ".php";
+        $fullPath = $path . $classname . $extension;
+
+        if(!file_exists($fullPath)){
+            return false;
+        }
+
+        include $fullPath;
+        
     }      
     
 
