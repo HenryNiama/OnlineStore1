@@ -16,24 +16,42 @@ class UsuarioController{
 
         if(isset($_POST)){
 
-            $usuario = new Usuario();
+            //Validación (Debería hacerse una mejor validación):
+            $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : false;
+            $apellido = isset($_POST['apellido']) ? $_POST['apellido'] : false;
+            $email = isset($_POST['email']) ? $_POST['email'] : false;
+            $password = isset($_POST['password']) ? $_POST['password'] : false;
 
-            $usuario->setNombre($_POST['nombre']);
-            $usuario->setApellidos($_POST['apellido']);
-            $usuario->setEmail($_POST['email']);
-
-            //$usuario->setPassword($_POST['password']);
+            //var_dump($nombre);
             
+            if($nombre && $apellido && $email && $password){
+                
+                //Creación de objeto
+                $usuario = new Usuario();
+                
+                $usuario->setNombre($nombre);
+                $usuario->setApellidos($apellido);
+                $usuario->setEmail($email);
+                $usuario->setPassword($password);
+            
+                //Guardamos el objeto.
+                $save = $usuario->save();
 
-            $save = $usuario->save();
+                if ($save) {
+                    $_SESSION['register'] = "completo";
+                }else{
+                    $_SESSION['register'] = "fallido";
+                }
 
-            if ($save) {
-                echo "Registro completado.";
             }else{
-                echo "Registro fallido.";
+                $_SESSION['register'] = "fallido";   
             }
-
+            
+        }else{
+            $_SESSION['register'] = "fallido";        
         }
+        
+        header("Location:".base_url."Archivos/?controller=usuario&action=registro");
     }
 
 }

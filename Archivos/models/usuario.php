@@ -7,6 +7,7 @@ class Usuario{
     private $apellidos;
     private $email;
     private $password;
+    private $rol;
     private $imagen;
 
     //Conexión base de datos:
@@ -26,7 +27,6 @@ class Usuario{
     {
         $this->id = $id;
 
-        return $this;
     }
 
  
@@ -53,7 +53,6 @@ class Usuario{
     {
         $this->apellidos =  $this->nombre = $this->db->real_escape_string($apellidos);
 
-        return $this;
     }
 
 
@@ -67,7 +66,6 @@ class Usuario{
     {
         $this->email =  $this->nombre = $this->db->real_escape_string($email);
 
-        return $this;
     }
 
 
@@ -82,7 +80,6 @@ class Usuario{
         
         $this->password = password_hash($this->db->real_escape_string($password), PASSWORD_BCRYPT, ['cost' => 4]);
 
-        return $this;
     }
 
 
@@ -96,15 +93,28 @@ class Usuario{
     {
         $this->imagen = $imagen;
 
+    }
+
+    public function getRol()
+    {
+        return $this->rol;
+    }
+
+
+    public function setRol($rol)
+    {
+        $this->rol = $rol;
+
         return $this;
     }
+
 
     /*Metodos propios: */
 
     public function save(){
 
         $sql = "INSERT INTO usuarios VALUES(NULL, '{$this->getNombre()}', 
-        '{$this->getApellidos()}', '{$this->getEmail()}', '{$this->getPassword()}', 'user', null)";
+        '{$this->getApellidos()}', '{$this->getEmail()}', '{$this->getPassword()}', 'user', null);";
 
         $save = $this->db->query($sql);
 
@@ -117,6 +127,9 @@ class Usuario{
         return $result;
 
     }
+
+
+
 }
 
 ?>

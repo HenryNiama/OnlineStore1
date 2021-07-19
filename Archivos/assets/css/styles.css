@@ -417,3 +417,11 @@ button{
     padding:2px;
     margin: 7px;
 }
+
+.alert-green{
+    color: green;
+}
+
+.alert-red{
+    color: red;
+}

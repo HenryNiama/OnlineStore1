@@ -5,12 +5,16 @@ recoger un parametro con una url y ve a que controlador
 pertenece para cargar ese archivo.
 */
 
+session_start();
+
 require_once 'config/db.php';
 
 //Cargamos el autoload.php, para tener acceso a todos los controladores
 require_once 'autoload.php';
 
 require_once 'config/parameters.php';
+
+require_once 'helpers/utils.php';
 
 require_once 'views/layout/header.php';
 require_once 'views/layout/sidebar.php';
