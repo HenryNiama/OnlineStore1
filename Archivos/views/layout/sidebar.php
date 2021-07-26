@@ -21,6 +21,7 @@
 
                         <input type="submit" value="Enviar">
                     </form>
+                    
 
                     <?php else:  ?>  
                         <h3><?= $_SESSION['identify']->nombre?></h3>
@@ -30,7 +31,7 @@
 
                     <ul>
                         <?php if(isset($_SESSION['admin'])): ?>
-                            <li><a href="#">Gestionar Cateogorías</a></li>
+                            <li><a href="<?=base_url?>Archivos/?controller=Categoria&action=index">Gestionar Cateogorías</a></li>
                             <li><a href="#">Gestionar Productos</a></li>
                             <li><a href="#">Gestionar Pedidos</a></li>                 
                         <?php endif; ?>    
@@ -38,6 +39,8 @@
                         <?php if(isset($_SESSION['identify'])): ?>
                             <li><a href="#">Mis Pedidos</a></li>
                             <li><a href="<?=base_url?>Archivos/?controller=usuario&action=logout">Cerrar sesión</a></li>
+                        <?php else: ?> 
+                            <li><a href="<?=base_url?>Archivos/?controller=usuario&action=registro">Registrate Aquí</a></li>
                         <?php endif; ?>  
                     </ul>
                     
