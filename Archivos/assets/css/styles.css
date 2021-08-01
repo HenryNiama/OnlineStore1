@@ -181,6 +181,9 @@ td{
 /*FORMS*/
 .form_container{
     width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    
 }
 
 label,
@@ -252,6 +255,10 @@ button, .button{
      border: 1px solid #cf1717;
 }
 
+.azul{
+    background-color: #01B1EA;
+}
+
 label, 
 input[type="button"],
 input[type="submit"],
@@ -303,6 +310,10 @@ button{
 .product img{
     height:170px;
     margin-bottom: 10px;
+}
+
+.thumb{
+    width: 100px;
 }
 
 .img_carrito{
