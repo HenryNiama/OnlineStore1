@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda de Camisetas</title>
-    <link rel="stylesheet" href="<?=base_url?>/assets/css/styles.css">
+    <link rel="stylesheet" href="<?=base_url?>assets/css/styles.css">
 </head>
 
 <body>
@@ -15,7 +15,7 @@
         <!--Cabecera-->
         <header id="header">
             <div id="logo">
-                <img src="<?=base_url?>/assets/img/camiseta.png" alt="camiseta logo" />
+                <img src="<?=base_url?>assets/img/camiseta.png" alt="camiseta logo" />
                 <a href="/index.php">
                     Tienda de camisetas
                 </a>
@@ -28,12 +28,12 @@
         <nav id="menu">
             <ul>
                 <li>
-                    <a href="#">Inicio</a>
+                    <a href="<?=base_url?>index.php">Inicio</a>
                 </li>
 
                 <?php while($cat = $categorias->fetch_object()): ?>
                     <li>
-                        <a href="#"><?=$cat->nombre?></a>
+                        <a href="<?=base_url?>Archivos/?controller=categoria&action=ver&id=<?=$cat->id?>"><?=$cat->nombre?></a>
                     </li>
                 <?php endwhile; ?>    
 

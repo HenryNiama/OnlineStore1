@@ -1,6 +1,7 @@
 <?php
 
 require_once 'models/categoria.php';
+require_once 'models/producto.php';
 
 class CategoriaController{
 
@@ -31,6 +32,25 @@ class CategoriaController{
 
 
         header("Location: ".base_url."Archivos/?controller=Categoria&action=index");//ojo
+    }
+
+    public function ver()
+    {
+        if(isset($_GET['id'])){
+            $id = $_GET['id'];
+
+            //cONSEGUIR CATEGORIAS
+            $categoria = new Categoria();
+            $categoria->setId($id);
+            $objetoCategoria = $categoria->getOne();     
+            
+            //CONSEGUIR PRODUCTOS POR CATEGORIA
+            $producto = new Producto();
+            $producto->setCategoria_id($id);
+            $productos = $producto->getAllCategory();
+        }
+
+        require_once 'views/categoria/ver.php';
     }
 }
 ?>

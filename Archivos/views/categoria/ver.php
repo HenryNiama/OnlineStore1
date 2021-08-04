@@ -1,7 +1,12 @@
+<?php if(isset($objetoCategoria)): ?>
 
-<h1>Algunos de nuestros Productos.</h1>
+    <h1><?=$objetoCategoria->nombre;?></h1>
 
-<?php while($product = $productos->fetch_object()): ?>
+    <?php if($productos->num_rows == 0): ?>
+        <p>No hay productos para mostrar.</p>
+    <?php else: ?>
+
+        <?php while($product = $productos->fetch_object()): ?>
 
 <div class="product">
     <a href="<?=base_url?>Archivos/?controller=producto&action=ver&id=<?=$product->id?>">
@@ -18,5 +23,8 @@
 
 <?php endwhile; ?>
 
+    <?php endif; ?>
 
-
+<?php else: ?>
+    <h1>La Categoría no existe.</h1>
+<?php endif; ?>

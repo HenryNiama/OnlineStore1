@@ -35,7 +35,7 @@
 
     <label for="imagen">Imagen</label>
         <?php if(isset($prod) && is_object($prod) && !empty($prod->imagen)) : ?>
-            <img src="<?=base_url?>Archivos/uploads/images/<?=$prod->imagen?>" alt="Imagen de la prenda."
+            <img src="/uploads/images/<?=$prod->imagen?>" alt="Imagen de la prenda."
             class="thumb">
         <?php endif; ?>    
     <input type="file" name="imagen">

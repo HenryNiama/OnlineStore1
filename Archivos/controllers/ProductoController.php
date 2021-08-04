@@ -6,9 +6,12 @@ require_once 'models/producto.php';
 class ProductoController{
 
     public function index(){
+
+        $producto = new Producto();
+        $productos = $producto->getRandom(6);
+
         //Renderizar vista
-        require_once 'views/producto/destacados.php';
-        //print("El huevo");
+        require_once 'views/producto/destacados.php'; 
     }
     
     public function gestion(){
@@ -155,6 +158,19 @@ class ProductoController{
 
         //redirección:
         header('Location:'.base_url.'Archivos/?controller=producto&action=gestion');
+    }
+
+    public function ver()
+    {
+        if(isset($_GET['id'])){
+            $id = $_GET['id'];
+
+            $producto = new Producto();
+            $producto->setId($id);
+            $prod = $producto->getOne();           
+        }
+
+        require_once 'views/producto/ver.php';
     }
 }
 ?>
